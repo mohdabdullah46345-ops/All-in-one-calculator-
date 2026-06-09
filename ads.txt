@@ -1,0 +1,6 @@
+# ads.txt for FinCalc Pro
+# AdSense approval ke BAAD: neeche wali line ko uncomment karein aur
+# pub-0000000000000000 ko apne asli Google AdSense Publisher ID se replace karein.
+# Publisher ID aapke AdSense account > Account > Settings > Account information mein milega (ca-pub-...).
+#
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
