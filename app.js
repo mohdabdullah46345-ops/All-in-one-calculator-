@@ -24,13 +24,21 @@ document.querySelectorAll(".tab").forEach(t => {
   };
 });
 
-// ---- theme ----
+// ---- theme (with persistence across pages) ----
 const themeBtn = $("themeBtn");
-themeBtn.onclick = () => {
-  const light = document.documentElement.getAttribute("data-theme") === "light";
-  document.documentElement.setAttribute("data-theme", light ? "" : "light");
-  themeBtn.textContent = light ? "🌙 Dark" : "☀️ Light";
-};
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme === "light" ? "light" : "");
+  if (themeBtn) themeBtn.textContent = theme === "light" ? "☀️ Light" : "🌙 Dark";
+}
+applyTheme(localStorage.getItem("fincalc-theme") || "dark");
+if (themeBtn) {
+  themeBtn.onclick = () => {
+    const light = document.documentElement.getAttribute("data-theme") === "light";
+    const next = light ? "dark" : "light";
+    localStorage.setItem("fincalc-theme", next);
+    applyTheme(next);
+  };
+}
 
 // sync number <-> range (both directions, then recalculate)
 function link(numId, rangeId, fn) {
