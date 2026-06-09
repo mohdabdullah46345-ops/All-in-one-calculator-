@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Guides &amp; Articles · FinCalc Pro</title>
+<meta name="description" content="Free, easy-to-read financial guides on SIP, EMI, Fixed Deposits and GST. Learn how each works with simple examples before you use our calculators.">
+<meta name="keywords" content="financial guides, SIP guide, EMI guide, FD guide, GST guide, money articles, finance basics">
+<meta name="author" content="Abdullah">
+<link rel="canonical" href="https://mohdabdullah46345-ops.github.io/All-in-one-calculator-/guides.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Financial Guides & Articles · FinCalc Pro">
+<meta property="og:description" content="Free guides on SIP, EMI, FD and GST with simple examples.">
+<meta property="og:url" content="https://mohdabdullah46345-ops.github.io/All-in-one-calculator-/guides.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+<style>
+  .guide-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+  @media(max-width:680px){.guide-list{grid-template-columns:1fr}}
+  .guide-item{display:block;background:var(--bg);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;transition:.2s}
+  .guide-item:hover{border-color:var(--pri);text-decoration:none;transform:translateY(-2px)}
+  .guide-item h3{color:var(--pri2);margin:0 0 6px;font-size:17px}
+  .guide-item p{color:var(--muted);font-size:13.5px;margin:0}
+  .guide-item .tag{font-size:12px;color:var(--muted);margin-top:10px;display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <div class="mark">₹</div>
+        <div>
+          <h1>FinCalc Pro</h1>
+          <p>All-in-One Financial Calculator</p>
+        </div>
+      </a>
+    </div>
+    <button class="theme-btn" id="themeBtn">🌙 Dark</button>
+  </header>
+
+  <nav class="nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="guides.html" class="active">Guides</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+
+  <div class="card content">
+    <h2>Financial Guides &amp; Articles</h2>
+    <p>New to investing, loans, or taxes? These short, plain-language guides explain the basics behind each of our calculators &mdash; with simple formulas and real examples &mdash; so you can make confident, informed money decisions. All guides are free and require no sign-up.</p>
+
+    <div class="guide-list">
+      <a class="guide-item" href="sip-guide.html">
+        <h3>📈 What is SIP?</h3>
+        <p>How Systematic Investment Plans work, plus the magic of rupee-cost averaging and compounding.</p>
+        <span class="tag">6 min read</span>
+      </a>
+      <a class="guide-item" href="emi-guide.html">
+        <h3>🏦 What is EMI?</h3>
+        <p>The EMI formula explained, what affects your monthly installment, and tips to cut total interest.</p>
+        <span class="tag">6 min read</span>
+      </a>
+      <a class="guide-item" href="fd-guide.html">
+        <h3>💰 Fixed Deposits Explained</h3>
+        <p>How FD interest and quarterly compounding work, plus the types of FDs you can choose.</p>
+        <span class="tag">5 min read</span>
+      </a>
+      <a class="guide-item" href="gst-guide.html">
+        <h3>🧾 GST Explained</h3>
+        <p>GST slabs, CGST vs SGST vs IGST, and how to add or remove GST from any amount.</p>
+        <span class="tag">6 min read</span>
+      </a>
+    </div>
+
+    <p style="margin-top:22px;color:var(--muted);font-size:13px">All articles are for educational purposes only and do not constitute financial, tax, or legal advice. Please read our <a href="terms.html">Terms &amp; Disclaimer</a>.</p>
+  </div>
+
+  <footer>
+    <div class="foot-links">
+      <a href="guides.html">Guides</a> ·
+      <a href="about.html">About</a> ·
+      <a href="contact.html">Contact</a> ·
+      <a href="privacy-policy.html">Privacy Policy</a> ·
+      <a href="terms.html">Terms &amp; Disclaimer</a>
+    </div>
+    Made with ❤️ by Abdullah · FinCalc Pro<br>
+    &copy; <span id="year"></span> FinCalc Pro. All rights reserved.
+  </footer>
+</div>
+<script src="common.js"></script>
+</body>
+</html>
