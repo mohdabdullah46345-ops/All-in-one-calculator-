@@ -52,12 +52,14 @@ function sip() {
   const P = num("sipAmt"), r = num("sipRate") / 100 / 12, n = num("sipYr") * 12;
   const fv = r > 0 ? P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r) : P * n;
   const inv = P * n, ret = fv - inv;
+  // round consistently so Invested + Returns === Total
+  const fvR = Math.round(fv), invR = Math.round(inv), retR = fvR - invR;
   $("sipAmtV").textContent = fmt(P);
   $("sipRateV").textContent = num("sipRate") + "%";
   $("sipYrV").textContent = num("sipYr") + " yr";
-  $("sipTotal").textContent = fmt(fv);
-  $("sipInvested").textContent = fmt(inv);
-  $("sipReturns").textContent = fmt(ret);
+  $("sipTotal").textContent = fmt(fvR);
+  $("sipInvested").textContent = fmt(invR);
+  $("sipReturns").textContent = fmt(retR);
   $("sipBar1").style.width = pct(inv, fv);
   $("sipBar2").style.width = pct(ret, fv);
 }
@@ -69,13 +71,15 @@ function emi() {
   let e = 0;
   if (n > 0) e = r > 0 ? P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1) : P / n;
   const total = e * n, interest = total - P;
+  // round consistently so Principal + Interest === Total Payment
+  const pR = Math.round(P), intR = Math.round(interest), totalR = pR + intR;
   $("emiAmtV").textContent = fmt(P);
   $("emiRateV").textContent = num("emiRate") + "%";
   $("emiYrV").textContent = num("emiYr") + " yr";
   $("emiMonthly").textContent = fmt(e);
-  $("emiPrincipal").textContent = fmt(P);
-  $("emiInterest").textContent = fmt(interest);
-  $("emiTotal").textContent = fmt(total);
+  $("emiPrincipal").textContent = fmt(pR);
+  $("emiInterest").textContent = fmt(intR);
+  $("emiTotal").textContent = fmt(totalR);
   $("emiBar1").style.width = pct(P, total);
   $("emiBar2").style.width = pct(interest, total);
 }
@@ -85,12 +89,14 @@ link("emiAmt", "emiAmtR", emi); link("emiRate", "emiRateR", emi); link("emiYr", 
 function fd() {
   const P = num("fdAmt"), r = num("fdRate") / 100, t = num("fdYr");
   const m = P * Math.pow(1 + r / 4, 4 * t), interest = m - P;
+  // round consistently so Invested + Interest === Maturity Value
+  const pR = Math.round(P), mR = Math.round(m), intR = mR - pR;
   $("fdAmtV").textContent = fmt(P);
   $("fdRateV").textContent = num("fdRate") + "%";
   $("fdYrV").textContent = num("fdYr") + " yr";
-  $("fdTotal").textContent = fmt(m);
-  $("fdInvested").textContent = fmt(P);
-  $("fdInterest").textContent = fmt(interest);
+  $("fdTotal").textContent = fmt(mR);
+  $("fdInvested").textContent = fmt(pR);
+  $("fdInterest").textContent = fmt(intR);
   $("fdBar1").style.width = pct(P, m);
   $("fdBar2").style.width = pct(interest, m);
 }
@@ -103,12 +109,15 @@ function gst() {
   let base, tax, total;
   if (type === "add") { base = A; tax = A * rate / 100; total = A + tax; }
   else { base = A / (1 + rate / 100); tax = A - base; total = A; }
+  // round consistently so Base + GST === Total and CGST + SGST === GST
+  const totalR = Math.round(total), baseR = Math.round(base), taxR = totalR - baseR;
+  const cgst = Math.round(taxR / 2), sgst = taxR - cgst;
   $("gstAmtV").textContent = fmt(A);
   $("gstRateV").textContent = rate + "%";
-  $("gstTotal").textContent = fmt(total);
-  $("gstBase").textContent = fmt(base);
-  $("gstTax").textContent = fmt(tax);
-  $("gstSplit").textContent = fmt(tax / 2) + " + " + fmt(tax / 2);
+  $("gstTotal").textContent = fmt(totalR);
+  $("gstBase").textContent = fmt(baseR);
+  $("gstTax").textContent = fmt(taxR);
+  $("gstSplit").textContent = fmt(cgst) + " + " + fmt(sgst);
 }
 link("gstAmt", "gstAmtR", gst);
 $("gstRate").oninput = () => { $("gstRateR").value = $("gstRate").value; gst(); };
