@@ -2,7 +2,7 @@
 
 A free, mobile-friendly financial calculator with **SIP**, **EMI**, **FD**, and **GST** tools in a single page. Built with plain HTML, CSS, and JavaScript — no build step, no dependencies.
 
-🔗 **Live site:** https://mohdabdullah46345-ops.github.io/All-in-one-calculator-/
+🔗 **Live site:** https://quicktoolkit1.github.io/All-in-one-calculator-/
 
 ## ✨ Features
 
